@@ -89,12 +89,12 @@
 }
 
 .education-year {
-  font-size: 0.9rem;
+  font-size: 0.6rem;
   color: var(--primary-blue);
   font-weight: 500;
   background: var(--light-blue);
-  padding: 4px 12px;
-  border-radius: 20px;
+  padding: 4px 10px;
+  border-radius: 15px;
 }
 
 .education-school {

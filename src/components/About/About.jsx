@@ -54,8 +54,8 @@ const About = () => {
           >
             <div className="about-description">
               <p>
-                Currently pursuing <strong>B.Tech in Computer Science Engineering</strong> from 
-                ITM Gorakhpur, with hands-on experience in frontend and backend development, 
+                Fresher Graduate <strong>B.Tech in Computer Science and Engineering</strong> from 
+                Institute of Technology and Management, Gorakhpur, with hands-on experience in frontend and backend development, 
                 cloud computing, and big data analytics. I'm driven to create high-performance 
                 web applications that make an impact.
               </p>
@@ -77,19 +77,21 @@ const About = () => {
               <div className="education-list">
                 <div className="education-item">
                   <div className="education-header">
-                    <h4>B.Tech in Computer Science Engineering</h4>
+                    <h4>B.Tech in Computer Science & Engineering</h4>
                     <span className="education-year">2022 - 2025</span>
+                    <span className="education-year">Completed</span>
                   </div>
-                  <p className="education-school">ITM Gorakhpur</p>
+                  <p className="education-school">Institute of Technology and Management, Gorakhpur</p>
                   <p className="education-grade">CGPA: 7.5/10</p>
                 </div>
                 
                 <div className="education-item">
                   <div className="education-header">
                     <h4>Polytechnic Diploma in Electronics Engineering</h4>
+                    <span className="education-year">2020 - 2022</span>
                     <span className="education-year">Completed</span>
                   </div>
-                  <p className="education-school">Maharana Pratap Polytechnic</p>
+                  <p className="education-school">Maharana Pratap Polytechnic, Gorakhpur</p>
                   <p className="education-grade">Percentage: 77.37%</p>
                 </div>
               </div>

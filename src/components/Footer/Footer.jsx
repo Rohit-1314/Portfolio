@@ -100,7 +100,7 @@ const Footer = () => {
             </ul>
           </div>
 
-          <div className="footer-section">
+          {/* <div className="footer-section">
             <h4 className="section-title">Contact Info</h4>
             <div className="contact-info">
               <p>
@@ -116,7 +116,7 @@ const Footer = () => {
                 Gorakhpur, UP, India
               </p>
             </div>
-          </div>
+          </div> */}
         </div>
 
         <div className="footer-bottom">
@@ -125,13 +125,6 @@ const Footer = () => {
             <p className="copyright">
               © {currentYear} Rohit Kumar. Made with <FiHeart className="heart-icon" /> using React.js
             </p>
-            <button
-              onClick={scrollToTop}
-              className="scroll-top-btn"
-              aria-label="Scroll to top"
-            >
-              <FiArrowUp />
-            </button>
           </div>
         </div>
       </div>

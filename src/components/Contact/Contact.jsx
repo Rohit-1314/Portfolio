@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { 
-  FiMail, 
-  FiPhone, 
-  FiMapPin, 
-  FiLinkedin, 
-  FiGithub, 
+import {
+  FiMail,
+  FiPhone,
+  FiMapPin,
+  FiLinkedin,
+  FiGithub,
   FiSend,
   FiUser,
   FiMessageSquare
 } from 'react-icons/fi';
 import './Contact.css';
+import '../Hero/Hero.css';
 
 const Contact = () => {
   const [ref, inView] = useInView({
@@ -39,7 +40,7 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     // Simulate form submission
     setTimeout(() => {
       alert('Thank you for your message! I\'ll get back to you soon.');
@@ -55,12 +56,12 @@ const Contact = () => {
       value: 'rohit369id@gmail.com',
       link: 'mailto:rohit369id@gmail.com'
     },
-    {
-      icon: <FiPhone />,
-      title: 'Phone',
-      value: '+91 7905384124',
-      link: 'tel:+917905384124'
-    },
+    // {
+    //   icon: <FiPhone />,
+    //   title: 'Phone',
+    //   value: '+91 7905384124',
+    //   link: 'tel:+917905384124'
+    // },
     {
       icon: <FiMapPin />,
       title: 'Location',
@@ -109,7 +110,7 @@ const Contact = () => {
             <div className="info-header">
               <h3>Let's Connect</h3>
               <p>
-                I'm always open to discussing new opportunities, interesting projects, 
+                I'm always open to discussing new opportunities, interesting projects,
                 or just having a chat about technology and development.
               </p>
             </div>
@@ -136,7 +137,7 @@ const Contact = () => {
 
             <div className="social-section">
               <h4>Follow Me</h4>
-              <div className="social-links">
+              {/* <div className="social-links">
                 {socialLinks.map((social, index) => (
                   <a
                     key={index}
@@ -150,13 +151,38 @@ const Contact = () => {
                     <span>{social.name}</span>
                   </a>
                 ))}
+              </div> */}
+              <div className="social-links">
+                <a
+                  href="https://github.com/Rohit-1314"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  // className="btn btn-outline social-btn"
+                  className="btn btn-primary hero-btn"
+                  aria-label="GitHub Profile"
+                >
+                  <FiGithub />
+                  GitHub
+                </a>
+
+                <a
+                  href="https://www.linkedin.com/in/rohit-kumar-a02564265"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  // className="btn btn-outline social-btn"
+                  className="btn btn-primary hero-btn"
+                  aria-label="LinkedIn Profile"
+                >
+                  <FiLinkedin />
+                  LinkedIn
+                </a>
               </div>
             </div>
 
             <div className="availability-status">
               <div className="status-indicator">
                 <div className="status-dot available"></div>
-                <span>Available for new opportunities</span>
+                <h4><span>Available for new opportunities</span></h4>
               </div>
             </div>
           </motion.div>
@@ -253,7 +279,7 @@ const Contact = () => {
         >
           <h3>Ready to Work Together?</h3>
           <p>
-            I'm currently looking for new opportunities where I can contribute, 
+            I'm currently looking for new opportunities where I can contribute,
             learn, and grow. Let's build something amazing together!
           </p>
           <div className="cta-buttons">
