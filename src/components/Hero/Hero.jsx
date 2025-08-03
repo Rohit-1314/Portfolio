@@ -85,7 +85,7 @@ const Hero = () => {
           >
             <div className="hero-avatar">
               <div className="avatar-placeholder">
-                <span className="avatar-text">RK</span>
+                <img src="@/Assets/Rohit-img.png" alt="Rohit Kumar" className="avatar-image" />
               </div>
               <div className="avatar-glow"></div>
             </div>

@@ -18,7 +18,7 @@ const Certifications = () => {
       date: 'August 2024',
       description: 'Comprehensive certification covering Java fundamentals, OOP concepts, and enterprise application development.',
       skills: ['Java', 'OOP', 'Spring Boot', 'REST APIs'],
-      credentialUrl: '#',
+      credentialUrl: 'https://drive.google.com/file/d/12Nn7UnOvRpO4ER92i0Aj_LeI2qFshX0_/view?usp=drive_link',
       featured: true,
     },
     // {
@@ -38,7 +38,7 @@ const Certifications = () => {
       date: 'October 2024',
       description: 'Advanced certification in big data processing, analytics, and visualization using modern tools and frameworks.',
       skills: ['Hadoop', 'Apache Spark', 'Tableau', 'Data Analytics'],
-      credentialUrl: '#',
+      credentialUrl: 'https://drive.google.com/file/d/1Wii1cnBr289uosHh0fhHkU55O_X7jaLw/view?usp=drive_link',
       featured: true,
     },
     {
@@ -48,7 +48,7 @@ const Certifications = () => {
       date: 'July 2024',
       description: 'Intensive bootcamp covering React.js fundamentals, hooks, state management, and modern development practices.',
       skills: ['React.js', 'JavaScript', 'HTML/CSS', 'Frontend Development'],
-      credentialUrl: '#',
+      credentialUrl: 'https://drive.google.com/file/d/1x9HhpcOthW211xGIE7HFqE6LqhTUNT3o/view?usp=drive_link',
       featured: false,
     },
     {
@@ -58,7 +58,7 @@ const Certifications = () => {
       date: '2022',
       description: 'Recognition for outstanding academic performance in Electronics Engineering with 77.37% marks.',
       skills: ['Electronics', 'Academic Excellence', 'Problem Solving'],
-      credentialUrl: null,
+      credentialUrl: '#',
       featured: false,
     },
   ];

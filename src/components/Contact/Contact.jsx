@@ -9,10 +9,14 @@ import {
   FiGithub,
   FiSend,
   FiUser,
-  FiMessageSquare
+  FiMessageSquare,
+  FiCheckCircle,
+  FiXCircle,
+  FiAlertCircle
 } from 'react-icons/fi';
 import './Contact.css';
 import '../Hero/Hero.css';
+import ContactAPI from '../../../api/contact';
 
 const Contact = () => {
   const [ref, inView] = useInView({
@@ -28,6 +32,24 @@ const Contact = () => {
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState({
+    type: '', // 'success', 'error', 'info'
+    message: '',
+    show: false
+  });
+
+  // Clear status message after 5 seconds
+  const clearStatusMessage = () => {
+    setTimeout(() => {
+      setSubmitStatus({ type: '', message: '', show: false });
+    }, 3000);
+  };
+
+  // Show status message
+  const showStatusMessage = (type, message) => {
+    setSubmitStatus({ type, message, show: true });
+    clearStatusMessage();
+  };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -39,29 +61,58 @@ const Contact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    // Prevent multiple submissions
+    if (isSubmitting) return;
+    
     setIsSubmitting(true);
-
-    // Simulate form submission
-    setTimeout(() => {
-      alert('Thank you for your message! I\'ll get back to you soon.');
-      setFormData({ name: '', email: '', subject: '', message: '' });
+    
+    // Show "sending" message
+    showStatusMessage('info', 'Sending your message...');
+    
+    try {
+      // Attempt to submit via Google Scripts API
+      const result = await ContactAPI.submitForm(formData);
+      
+      if (result.success) {
+        // Success: clear form and show success message
+        setFormData({ name: '', email: '', subject: '', message: '' });
+        showStatusMessage('success', 'Your message has been sent successfully! I\'ll get back to you soon.');
+      }
+    } catch (error) {
+      console.error('Form submission error:', error);
+      
+      // Handle different types of errors
+      if (error.message.includes('required') || 
+          error.message.includes('valid') || 
+          error.message.includes('characters')) {
+        // Validation errors
+        showStatusMessage('error', error.message);
+      } else {
+        // Network or server errors - offer fallback
+        showStatusMessage('error', 'Unable to send message through the contact form. Redirecting to email...');
+        
+        // Fallback to mailto after a short delay
+        setTimeout(() => {
+          try {
+            const mailtoLink = ContactAPI.createMailtoLink(formData);
+            window.location.href = mailtoLink;
+            setFormData({ name: '', email: '', subject: '', message: '' });
+          } catch (mailtoError) {
+            showStatusMessage('error', 'Please send your message directly to rohit369id@gmail.com');
+          }
+        }, 2000);
+      }
+    } finally {
       setIsSubmitting(false);
-    }, 1000);
-  };
-
-  const contactInfo = [
+    }
+  };  const contactInfo = [
     {
       icon: <FiMail />,
       title: 'Email',
       value: 'rohit369id@gmail.com',
-      link: 'mailto:rohit369id@gmail.com'
+      link: 'mailto:rohit369id@gmail.com',
     },
-    // {
-    //   icon: <FiPhone />,
-    //   title: 'Phone',
-    //   value: '+91 7905384124',
-    //   link: 'tel:+917905384124'
-    // },
     {
       icon: <FiMapPin />,
       title: 'Location',
@@ -241,7 +292,7 @@ const Contact = () => {
                   <FiMessageSquare className="input-icon textarea-icon" />
                   <textarea
                     name="message"
-                    placeholder="Your Message"
+                    placeholder="Your Message must be at least 10 characters long"
                     rows="5"
                     value={formData.message}
                     onChange={handleInputChange}
@@ -268,6 +319,24 @@ const Contact = () => {
                 )}
               </button>
             </form>
+
+            {/* Status Message */}
+            {submitStatus.show && (
+              <motion.div
+                className={`status-message ${submitStatus.type}`}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.3 }}
+              >
+                <div className="status-icon">
+                  {submitStatus.type === 'success' && <FiCheckCircle />}
+                  {submitStatus.type === 'error' && <FiXCircle />}
+                  {submitStatus.type === 'info' && <FiAlertCircle />}
+                </div>
+                <span>{submitStatus.message}</span>
+              </motion.div>
+            )}
           </motion.div>
         </div>
 
@@ -283,19 +352,39 @@ const Contact = () => {
             learn, and grow. Let's build something amazing together!
           </p>
           <div className="cta-buttons">
-            <a
-              href="/resume.pdf"
-              download
-              className="btn btn-primary"
+            <button
+              className="btn btn-primary hero-btn"
+              onClick={() => {
+                const downloadUrl = `${window.location.origin}/resume.pdf`;
+                fetch(downloadUrl)
+                  .then(response => response.blob())
+                  .then(blob => {
+                    const url = window.URL.createObjectURL(blob);
+                    const link = document.createElement('a');
+                    link.href = url;
+                    link.download = 'Rohit_Kumar_Resume.pdf';
+                    document.body.appendChild(link);
+                    link.click();
+                    window.URL.revokeObjectURL(url);
+                    document.body.removeChild(link);
+                  })
+                  .catch(error => {
+                    console.error('Download failed:', error);
+                    alert('Failed to download resume. Please try again.');
+                  });
+              }}
             >
               Download Resume
-            </a>
-            <a
-              href="mailto:rohit369id@gmail.com"
+            </button>
+            <button
               className="btn btn-secondary"
+              onClick={() => {
+                const mailtoUrl = "mailto:rohit369id@gmail.com?subject=Interested%20in%20Working%20Together&body=Hi%20Rohit%2C%0A%0AI%20came%20across%20your%20portfolio%20and%20would%20love%20to%20discuss%20potential%20opportunities.%0A%0ABest%20regards";
+                window.location.href = mailtoUrl;
+              }}
             >
               Send Email
-            </a>
+            </button>
           </div>
         </motion.div>
       </div>
