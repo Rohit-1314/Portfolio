@@ -263,6 +263,10 @@
   color: var(--text-primary);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+  /* Mobile optimizations */
+  touch-action: manipulation;
+  -webkit-appearance: none;
+  appearance: none;
 }
 
 .contact-form input:hover,
@@ -676,7 +680,7 @@
   .contact-form input,
   .contact-form textarea {
     padding: 0.875rem 0.875rem 0.875rem 2.75rem;
-    font-size: 0.9rem;
+    font-size: 16px; /* Prevent zoom on iOS */
   }
 
   .input-icon {

@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://rohit1314.netlify.app/sitemap.xml
+
+# Block access to source files
+Disallow: /src/
+Disallow: /_next/
+
+# Allow important files
+Allow: /resume.pdf
+Allow: /icon-*.png
+Allow: /screenshot-*.png

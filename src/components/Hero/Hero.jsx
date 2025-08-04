@@ -2,6 +2,9 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { FiDownload, FiGithub, FiLinkedin, FiArrowDown } from 'react-icons/fi';
 import './Hero.css';
+import RohitImage from '../../Assets/Rohit.png';  // update path if needed
+
+
 
 const Hero = () => {
   const scrollToAbout = () => {
@@ -85,7 +88,9 @@ const Hero = () => {
           >
             <div className="hero-avatar">
               <div className="avatar-placeholder">
-                <img src="@/Assets/Rohit-img.png" alt="Rohit Kumar" className="avatar-image" />
+                {/* <img src="./Assets/Rohit.png" alt="Rohit Kumar" className="avatar-image" />     */}
+                <img src={RohitImage} alt="Rohit Kumar" className="avatar-image" />
+
               </div>
               <div className="avatar-glow"></div>
             </div>
@@ -95,6 +100,7 @@ const Hero = () => {
               <div className="floating-element tech-icon java">Java</div>
               <div className="floating-element tech-icon spring">Spring</div>
               <div className="floating-element tech-icon js">JS</div>
+              <div className="floating-element tech-icon css">CSS</div>
             </div>
           </motion.div>
         </div>
