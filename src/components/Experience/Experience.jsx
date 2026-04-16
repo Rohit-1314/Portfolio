@@ -12,6 +12,24 @@ const Experience = () => {
 
   const experiences = [
     {
+      id: 3,
+      title: 'Project Associate',
+      company: 'CSIR-Central Electronics Engineering Research Institute (CEERI)',
+      location: 'Jaipur, Rajasthan',
+      duration: 'Dec 2025 - Present',
+      type: 'Full-time',
+      description: 'Working on innovative projects involving electronics design, web development, and IoT solutions with a focus on cybersecurity.',
+      responsibilities: [
+        'Developing IoT applications and smart electronics solutions',
+        'Building secure web applications and backend systems',
+        'Contributing to cybersecurity initiatives and protocols',
+        'Designing and implementing electronics components',
+        'Collaborating on research and development projects'
+      ],
+      technologies: ['Java', 'Web Development', 'Cybersecurity', 'Electronics Design', 'IoT', 'JavaScript', 'Backend Development'],
+      logo: '/company-logo-placeholder.jpg'
+    },
+    {
       id: 1,
       title: 'Big Data Trainee',
       company: 'Samsung Innovation Center',
@@ -188,15 +206,15 @@ const Experience = () => {
         >
           <div className="summary-stats">
             <div className="stat-item">
-              <div className="stat-number">2+</div>
+              <div className="stat-number">3+</div>
               <div className="stat-label">Months of Experience</div>
             </div>
             <div className="stat-item">
-              <div className="stat-number">2</div>
+              <div className="stat-number">3</div>
               <div className="stat-label">Organizations</div>
             </div>
             <div className="stat-item">
-              <div className="stat-number">10+</div>
+              <div className="stat-number">12+</div>
               <div className="stat-label">Technologies Used</div>
             </div>
           </div>
