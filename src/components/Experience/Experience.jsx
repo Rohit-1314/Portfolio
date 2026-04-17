@@ -206,7 +206,7 @@ const Experience = () => {
         >
           <div className="summary-stats">
             <div className="stat-item">
-              <div className="stat-number">3+</div>
+              <div className="stat-number">6+</div>
               <div className="stat-label">Months of Experience</div>
             </div>
             <div className="stat-item">
